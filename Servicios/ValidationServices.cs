@@ -70,5 +70,34 @@ namespace Servicios
             return voto;
             
         }
+
+        public void restablecerFrmRegistro(TextBox firstName, TextBox lastName, TextBox cedula, TextBox datoARegitrar)
+        {
+            firstName.Clear();
+            lastName.Clear();
+            cedula.Clear();
+            datoARegitrar.Clear();
+        }
+
+        public bool votanteDuplicado(Int64 cedula)
+        {
+            bool duplicado = false;
+
+            var listVotantes = from x in context.Votantes
+                               where x.cedula == cedula
+                               select x;
+
+            foreach(Votante myVotante in listVotantes)
+            {
+                if (myVotante.cedula == cedula)
+                {
+                    duplicado = true;
+                }
+            }
+
+            return duplicado;
+        }
+
+        public int votanteID { get; set; }
     }
 }
