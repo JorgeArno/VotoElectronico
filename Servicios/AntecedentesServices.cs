@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Servicios
 {
-    class AntecedentesServices
+    public class AntecedentesServices
     {
         ContextDB context = new ContextDB();
         Antecedente newCrime = new Antecedente();
