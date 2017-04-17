@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Entidades;
 using VotoElectronico;
 using System.Windows.Forms;
+using System.Data.Entity;
 
 namespace Servicios
 {
