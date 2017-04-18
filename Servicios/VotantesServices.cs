@@ -6,38 +6,57 @@ using System.Threading.Tasks;
 using Entidades;
 using VotoElectronico;
 using System.Windows.Forms;
+using System.Data.Entity;
 
 namespace Servicios
 {
     public class VotantesServices
     {
         ContextDB context = new ContextDB();
+        ValidationServices myValidationServices = new ValidationServices();
 
         public void agregarVotante(Int64 cedula, string firstName, string lastName, sbyte age)
         {
-            if(cedula != 0 &  firstName != string.Empty & lastName != string.Empty & age != 0)
+            try
             {
-                try
-                {
-                    Votante nuevoVotante = new Votante();
+                bool duplicidad = myValidationServices.votanteDuplicado(Convert.ToInt64(cedula));
 
-                    nuevoVotante.cedula = cedula;
-                    nuevoVotante.firstName = firstName;
-                    nuevoVotante.lastName = lastName;
-                    nuevoVotante.age = age;
-                    context.Votantes.Add(nuevoVotante);
-                    context.SaveChanges();
-                }
-                catch(Exception error)
+                if (duplicidad == true)
                 {
-                    MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Este votante ya esta registrado", "Votante Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                else
+                {
+                    if (cedula > 10000000000 & cedula < 99999999999 & firstName != string.Empty & lastName != string.Empty & age != 0)
+                    {
+                        try
+                        {
+                            Votante nuevoVotante = new Votante();
+
+                            nuevoVotante.cedula = cedula;
+                            nuevoVotante.firstName = firstName;
+                            nuevoVotante.lastName = lastName;
+                            nuevoVotante.age = age;
+                            context.Votantes.Add(nuevoVotante);
+                            context.SaveChanges();
+                        }
+                        catch (Exception error)
+                        {
+                            MessageBox.Show(error.Message + Environment.NewLine + "Error al agregar votante", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Todos los campos deben estar llenos.", "Informacion incompleta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+
             }
-            else
+            catch (Exception error)
             {
-                MessageBox.Show("Todos los campos deben estar llenos.", "Informacion incompleta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(error.Message + Environment.NewLine + "Error en los datos suministrados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            
             
         }
 
@@ -46,17 +65,17 @@ namespace Servicios
             return context.Votantes.ToList();
         }
 
-        public List<Votante> buscarVotantes(string firstName)
+        public List<Votante> buscarVotantes(Int64 cedula)
         {
             try
             {
-                if (firstName.Equals(string.Empty))
+                if (cedula < 10000000000 || cedula > 99999999999)
                 {
                     return context.Votantes.ToList();
                 }
                 else
                 {
-                    return context.Votantes.Where(voto => voto.firstName.Contains(firstName)).ToList();
+                    return context.Votantes.Where(votante => votante.cedula == cedula).ToList();
                 }
             }
             catch(Exception error)
@@ -64,6 +83,22 @@ namespace Servicios
                 MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
+        }
+
+        public void loadVotantes(int id, TextBox firstName, TextBox lastName, TextBox cedula, TextBox age)
+        {
+            var listVotantes = from x in context.Votantes
+                               where x.ID == id
+                               select x;
+
+            foreach(Votante myVotante  in listVotantes)
+            {
+                firstName.Text = myVotante.firstName;
+                lastName.Text = myVotante.lastName;
+                cedula.Text = Convert.ToString(myVotante.cedula);
+                age.Text = Convert.ToString(myVotante.age);
+            }
+
         }
 
         public void actualizarVotante(int ID, Int64 cedula, string firstName, string lastName, sbyte age)
