@@ -28,7 +28,7 @@ namespace VotoElectronico.Desktop
 
         private void btnRestablecerFormulario_Click(object sender, EventArgs e)
         {
-            myValidationServices.restablecerFrmRegistroVotantes(txtFirstName, txtLastName, txtCedula, txtAge);
+            myValidationServices.restablecerFrmRegistro(txtFirstName, txtLastName, txtCedula, txtAge);
         }
     }
 }

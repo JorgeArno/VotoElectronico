@@ -17,8 +17,7 @@ namespace VotoElectronico.Desktop
         {
             InitializeComponent();
         }
-
-        ValidationServices myValidationServices;
+        
 
         VotantesServices myVotantesServices = new VotantesServices();
 
@@ -35,9 +34,8 @@ namespace VotoElectronico.Desktop
 
         private void btnActualizarVotante_Click(object sender, EventArgs e)
         {
-            //myValidationServices.votanteID = int.Parse(dgvResults.CurrentCell.Value.ToString());
-            FRMActualizarVotante myFrmActualizarVotante = new FRMActualizarVotante();
-
+          FRMActualizarVotante myFrmActualizarVotante = new FRMActualizarVotante(int.Parse(dgvResults.CurrentCell.Value.ToString()));
+            myFrmActualizarVotante.Show();
         }
 
         private void btnValidarVotante_Click(object sender, EventArgs e)
