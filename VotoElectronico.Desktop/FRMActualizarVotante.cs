@@ -14,20 +14,20 @@ namespace VotoElectronico.Desktop
 {
     public partial class FRMActualizarVotante : Form
     {
-        public FRMActualizarVotante()
+        public int idVal { get; set; }
+
+        public FRMActualizarVotante(int id)
         {
             InitializeComponent();
-            myVotantesServices.loadVotantes(int.Parse(/* Falta id */, txtFirstName, txtLastName, txtCedula, txtAge));
+            idVal = id;
+            myVotantesServices.loadVotantes(id, txtFirstName, txtLastName, txtCedula, txtAge);
         }
 
-        ValidationServices myValidationServices = new ValidationServices();
         VotantesServices myVotantesServices = new VotantesServices();
-        
-        
-
+  
         private void btnActualizarVotante_Click(object sender, EventArgs e)
         {
-            myVotantesServices.actualizarVotante(Convert.ToSByte(/* Falta id */), Convert.ToInt64(txtCedula.Text), txtFirstName.Text, txtLastName.Text, Convert.ToSByte(txtAge.Text));
+            myVotantesServices.actualizarVotante(idVal, Convert.ToInt64(txtCedula.Text), txtFirstName.Text, txtLastName.Text, Convert.ToSByte(txtAge.Text));
         }
     }
 }
