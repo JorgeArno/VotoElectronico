@@ -27,7 +27,7 @@ namespace Servicios
                 }
                 else
                 {
-                    if (cedula > 10000000000 & cedula < 99999999999 & firstName != string.Empty & lastName != string.Empty & age != 0)
+                    if (cedula > 99999999 & cedula < 99999999999 & firstName != string.Empty & lastName != string.Empty & age != 0)
                     {
                         try
                         {
@@ -62,21 +62,9 @@ namespace Servicios
 
         public List<Votante> obtenerVotantes()
         {
-            return context.Votantes.ToList();
-        }
-
-        public List<Votante> buscarVotantes(Int64 cedula)
-        {
             try
             {
-                if (cedula < 10000000000 || cedula > 99999999999)
-                {
-                    return context.Votantes.ToList();
-                }
-                else
-                {
-                    return context.Votantes.Where(votante => votante.cedula == cedula).ToList();
-                }
+                return context.Votantes.ToList();
             }
             catch(Exception error)
             {
@@ -85,23 +73,52 @@ namespace Servicios
             }
         }
 
+        public List<Votante> buscarVotantes(Int64 cedula)
+        {
+            if(cedula > 9999999999 && cedula <= 99999999999)
+            {
+                try
+                {                    
+                     return context.Votantes.Where(votante => votante.cedula == cedula).ToList();                    
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Cedula debe ser de 11 digitos.", "Verificar Cedula", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return null;
+            }
+            
+        }
+
         public void loadVotantes(int id, TextBox firstName, TextBox lastName, TextBox cedula, TextBox age)
         {
-            var listVotantes = from x in context.Votantes
-                               where x.ID == id
-                               select x;
-
-            foreach(Votante myVotante  in listVotantes)
+            try
             {
-                firstName.Text = myVotante.firstName;
-                lastName.Text = myVotante.lastName;
-                cedula.Text = Convert.ToString(myVotante.cedula);
-                age.Text = Convert.ToString(myVotante.age);
+                var listVotantes = from x in context.Votantes
+                                   where x.ID == id
+                                   select x;
+
+                foreach (Votante myVotante in listVotantes)
+                {
+                    firstName.Text = myVotante.firstName;
+                    lastName.Text = myVotante.lastName;
+                    cedula.Text = Convert.ToString(myVotante.cedula);
+                    age.Text = Convert.ToString(myVotante.age);
+                }
+            }
+            catch(Exception error)
+            {
+                MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
-        public void actualizarVotante(int ID, Int64 cedula, string firstName, string lastName, sbyte age)
+        public void actualizarVotante(int ID, Int64 cedula, string firstName, string lastName, int age)
         {
             try
             {
@@ -126,15 +143,31 @@ namespace Servicios
 
         public void eliminarVotante(int ID)
         {
-            var listaVotantes = from x in context.Votantes
-                                where x.ID == ID
-                                select x;
+            DialogResult delete;
 
-            foreach(Votante eliminarVotante in listaVotantes)
+            delete = MessageBox.Show("Realmente desea eliminar este votante", "Eliminar Votante", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if(delete == DialogResult.Yes)
             {
-                context.Votantes.Remove(eliminarVotante);
+                try
+                {
+                    var listaVotantes = from x in context.Votantes
+                                        where x.ID == ID
+                                        select x;
+
+                    foreach (Votante eliminarVotante in listaVotantes)
+                    {
+                        context.Votantes.Remove(eliminarVotante);
+                    }
+                    context.SaveChanges();
+                }
+                catch(Exception error)
+                {
+                    MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            context.SaveChanges();
+
+            
         }
     }
 }

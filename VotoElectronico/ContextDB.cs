@@ -12,6 +12,7 @@ namespace VotoElectronico
     {
         public DbSet<Votante> Votantes { get; set; }
         public DbSet<Antecedente> Antecedentes { get; set; }
+        public DbSet<Voto> Votos { get; set; }
 
     }
 }

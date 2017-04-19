@@ -71,6 +71,24 @@ namespace Servicios
             
         }
 
+        public bool derechoAVotar(Int64 cedula)
+        {
+            bool crime = false;
+            bool age = false;
+
+            crime = crimeValidation(cedula);
+            age = ageValidation(cedula);
+
+            if(crime == true & age == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void restablecerFrmRegistro(TextBox firstName, TextBox lastName, TextBox cedula, TextBox datoARegitrar)
         {
             firstName.Clear();
@@ -98,6 +116,21 @@ namespace Servicios
             return duplicado;
         }
 
-        public int votanteID { get; set; }
+        public void frmRegistrarOActualizarAntecedentes(string elegirFormulario, Button registrar, Button actualizar,Button restablecer)
+        {
+            if (elegirFormulario.Equals("registrar"))
+            {
+                registrar.Visible = true;
+                actualizar.Visible = false;
+                restablecer.Visible = true;
+            }
+            else if (elegirFormulario.Equals("actualizar"))
+            {
+                registrar.Visible = false;
+                actualizar.Visible = true;
+                restablecer.Visible = false;
+            }
+        }
+       
     }
 }

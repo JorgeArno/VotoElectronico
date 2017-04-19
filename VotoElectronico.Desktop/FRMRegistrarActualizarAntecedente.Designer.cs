@@ -1,6 +1,6 @@
 ﻿namespace VotoElectronico.Desktop
 {
-    partial class FRMRegistrarAntecedente
+    partial class FRMRegistrarActualizarAntecedente
     {
         /// <summary>
         /// Required designer variable.
@@ -38,6 +38,7 @@
             this.txtCrime = new System.Windows.Forms.TextBox();
             this.btnRegistrarAntecedente = new System.Windows.Forms.Button();
             this.btnRestablecerFormulario = new System.Windows.Forms.Button();
+            this.btnActualizarAntecedentes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -126,11 +127,22 @@
             this.btnRestablecerFormulario.UseVisualStyleBackColor = true;
             this.btnRestablecerFormulario.Click += new System.EventHandler(this.btnRestablecerFormulario_Click);
             // 
-            // FRMRegistrarAntecedente
+            // btnActualizarAntecedentes
+            // 
+            this.btnActualizarAntecedentes.Location = new System.Drawing.Point(187, 390);
+            this.btnActualizarAntecedentes.Name = "btnActualizarAntecedentes";
+            this.btnActualizarAntecedentes.Size = new System.Drawing.Size(230, 58);
+            this.btnActualizarAntecedentes.TabIndex = 10;
+            this.btnActualizarAntecedentes.Text = "Actualizar Antecedentes";
+            this.btnActualizarAntecedentes.UseVisualStyleBackColor = true;
+            this.btnActualizarAntecedentes.Click += new System.EventHandler(this.btnActualizarAntecedentes_Click);
+            // 
+            // FRMRegistrarActualizarAntecedente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(631, 492);
+            this.Controls.Add(this.btnActualizarAntecedentes);
             this.Controls.Add(this.btnRestablecerFormulario);
             this.Controls.Add(this.btnRegistrarAntecedente);
             this.Controls.Add(this.txtCrime);
@@ -141,8 +153,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "FRMRegistrarAntecedente";
-            this.Text = "Registrar Antecedente";
+            this.Name = "FRMRegistrarActualizarAntecedente";
+            this.Text = " Antecedentes";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,5 +172,6 @@
         private System.Windows.Forms.TextBox txtCrime;
         private System.Windows.Forms.Button btnRegistrarAntecedente;
         private System.Windows.Forms.Button btnRestablecerFormulario;
+        private System.Windows.Forms.Button btnActualizarAntecedentes;
     }
 }
