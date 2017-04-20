@@ -53,6 +53,7 @@
     <Compile Include="ValidationServices.cs" />
     <Compile Include="VotantesServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VotosServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj">

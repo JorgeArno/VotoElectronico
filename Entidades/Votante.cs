@@ -18,7 +18,7 @@ namespace Entidades
         [Required]
         public string lastName { get; set; }
         [Required]
-        public sbyte age { get; set; }
+        public int age { get; set; }
                 
     }
 }

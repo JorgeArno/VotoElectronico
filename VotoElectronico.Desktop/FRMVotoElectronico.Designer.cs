@@ -36,17 +36,21 @@
             this.txtBuscarVotante = new System.Windows.Forms.TextBox();
             this.txtBuscarAntecedente = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnValidarVotante = new System.Windows.Forms.Button();
             this.btnEliminarVotante = new System.Windows.Forms.Button();
             this.btnActualizarVotante = new System.Windows.Forms.Button();
             this.btnBuscarVotante = new System.Windows.Forms.Button();
+            this.btnValidarVotante = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnEliminarAntecedente = new System.Windows.Forms.Button();
             this.btnActualizarAntecedente = new System.Windows.Forms.Button();
             this.btnBuscarAntecedente = new System.Windows.Forms.Button();
+            this.gboxElecciones = new System.Windows.Forms.GroupBox();
+            this.btnResultadoVotaciones = new System.Windows.Forms.Button();
+            this.btnRealizarVoto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.gboxElecciones.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvResults
@@ -59,7 +63,8 @@
             // 
             // btnRegistrarVotante
             // 
-            this.btnRegistrarVotante.Location = new System.Drawing.Point(51, 34);
+            this.btnRegistrarVotante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarVotante.Location = new System.Drawing.Point(51, 21);
             this.btnRegistrarVotante.Name = "btnRegistrarVotante";
             this.btnRegistrarVotante.Size = new System.Drawing.Size(249, 47);
             this.btnRegistrarVotante.TabIndex = 1;
@@ -69,48 +74,51 @@
             // 
             // btnRegistrarAntecedentes
             // 
-            this.btnRegistrarAntecedentes.Location = new System.Drawing.Point(82, 34);
+            this.btnRegistrarAntecedentes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarAntecedentes.Location = new System.Drawing.Point(82, 21);
             this.btnRegistrarAntecedentes.Name = "btnRegistrarAntecedentes";
             this.btnRegistrarAntecedentes.Size = new System.Drawing.Size(249, 47);
             this.btnRegistrarAntecedentes.TabIndex = 2;
             this.btnRegistrarAntecedentes.Text = "Registrar Antecedente";
             this.btnRegistrarAntecedentes.UseVisualStyleBackColor = true;
+            this.btnRegistrarAntecedentes.Click += new System.EventHandler(this.btnRegistrarAntecedentes_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(48, 125);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(49, 189);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.Size = new System.Drawing.Size(113, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "Buscar Votante";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(79, 125);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(79, 189);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 13);
+            this.label2.Size = new System.Drawing.Size(147, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Buscar Antecedente";
             // 
             // txtBuscarVotante
             // 
-            this.txtBuscarVotante.Location = new System.Drawing.Point(51, 141);
+            this.txtBuscarVotante.Location = new System.Drawing.Point(51, 211);
             this.txtBuscarVotante.Name = "txtBuscarVotante";
             this.txtBuscarVotante.Size = new System.Drawing.Size(249, 20);
             this.txtBuscarVotante.TabIndex = 5;
             // 
             // txtBuscarAntecedente
             // 
-            this.txtBuscarAntecedente.Location = new System.Drawing.Point(82, 141);
+            this.txtBuscarAntecedente.Location = new System.Drawing.Point(82, 211);
             this.txtBuscarAntecedente.Name = "txtBuscarAntecedente";
             this.txtBuscarAntecedente.Size = new System.Drawing.Size(249, 20);
             this.txtBuscarAntecedente.TabIndex = 6;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnValidarVotante);
             this.groupBox1.Controls.Add(this.btnEliminarVotante);
             this.groupBox1.Controls.Add(this.btnActualizarVotante);
             this.groupBox1.Controls.Add(this.btnBuscarVotante);
@@ -124,30 +132,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Votantes";
             // 
-            // btnValidarVotante
-            // 
-            this.btnValidarVotante.Location = new System.Drawing.Point(51, 254);
-            this.btnValidarVotante.Name = "btnValidarVotante";
-            this.btnValidarVotante.Size = new System.Drawing.Size(241, 35);
-            this.btnValidarVotante.TabIndex = 9;
-            this.btnValidarVotante.Text = "Validar Votante";
-            this.btnValidarVotante.UseVisualStyleBackColor = true;
-            this.btnValidarVotante.Click += new System.EventHandler(this.btnValidarVotante_Click);
-            // 
             // btnEliminarVotante
             // 
-            this.btnEliminarVotante.Location = new System.Drawing.Point(217, 190);
+            this.btnEliminarVotante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarVotante.Location = new System.Drawing.Point(51, 127);
             this.btnEliminarVotante.Name = "btnEliminarVotante";
-            this.btnEliminarVotante.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarVotante.Size = new System.Drawing.Size(249, 47);
             this.btnEliminarVotante.TabIndex = 8;
             this.btnEliminarVotante.Text = "Eliminar";
             this.btnEliminarVotante.UseVisualStyleBackColor = true;
             // 
             // btnActualizarVotante
             // 
-            this.btnActualizarVotante.Location = new System.Drawing.Point(136, 190);
+            this.btnActualizarVotante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarVotante.Location = new System.Drawing.Point(51, 74);
             this.btnActualizarVotante.Name = "btnActualizarVotante";
-            this.btnActualizarVotante.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizarVotante.Size = new System.Drawing.Size(249, 47);
             this.btnActualizarVotante.TabIndex = 7;
             this.btnActualizarVotante.Text = "Actualizar";
             this.btnActualizarVotante.UseVisualStyleBackColor = true;
@@ -155,13 +155,25 @@
             // 
             // btnBuscarVotante
             // 
-            this.btnBuscarVotante.Location = new System.Drawing.Point(55, 190);
+            this.btnBuscarVotante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarVotante.Location = new System.Drawing.Point(53, 245);
             this.btnBuscarVotante.Name = "btnBuscarVotante";
-            this.btnBuscarVotante.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscarVotante.Size = new System.Drawing.Size(247, 47);
             this.btnBuscarVotante.TabIndex = 6;
             this.btnBuscarVotante.Text = "Buscar";
             this.btnBuscarVotante.UseVisualStyleBackColor = true;
             this.btnBuscarVotante.Click += new System.EventHandler(this.btnBuscarVotante_Click);
+            // 
+            // btnValidarVotante
+            // 
+            this.btnValidarVotante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValidarVotante.Location = new System.Drawing.Point(47, 37);
+            this.btnValidarVotante.Name = "btnValidarVotante";
+            this.btnValidarVotante.Size = new System.Drawing.Size(249, 47);
+            this.btnValidarVotante.TabIndex = 9;
+            this.btnValidarVotante.Text = "Validar Votante";
+            this.btnValidarVotante.UseVisualStyleBackColor = true;
+            this.btnValidarVotante.Click += new System.EventHandler(this.btnValidarVotante_Click);
             // 
             // groupBox2
             // 
@@ -180,46 +192,87 @@
             // 
             // btnEliminarAntecedente
             // 
-            this.btnEliminarAntecedente.Location = new System.Drawing.Point(250, 190);
+            this.btnEliminarAntecedente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarAntecedente.Location = new System.Drawing.Point(82, 127);
             this.btnEliminarAntecedente.Name = "btnEliminarAntecedente";
-            this.btnEliminarAntecedente.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarAntecedente.Size = new System.Drawing.Size(249, 47);
             this.btnEliminarAntecedente.TabIndex = 9;
             this.btnEliminarAntecedente.Text = "Eliminar";
             this.btnEliminarAntecedente.UseVisualStyleBackColor = true;
+            this.btnEliminarAntecedente.Click += new System.EventHandler(this.btnEliminarAntecedente_Click);
             // 
             // btnActualizarAntecedente
             // 
-            this.btnActualizarAntecedente.Location = new System.Drawing.Point(169, 190);
+            this.btnActualizarAntecedente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarAntecedente.Location = new System.Drawing.Point(82, 74);
             this.btnActualizarAntecedente.Name = "btnActualizarAntecedente";
-            this.btnActualizarAntecedente.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizarAntecedente.Size = new System.Drawing.Size(249, 47);
             this.btnActualizarAntecedente.TabIndex = 8;
             this.btnActualizarAntecedente.Text = "Actualizar";
             this.btnActualizarAntecedente.UseVisualStyleBackColor = true;
             // 
             // btnBuscarAntecedente
             // 
-            this.btnBuscarAntecedente.Location = new System.Drawing.Point(88, 190);
+            this.btnBuscarAntecedente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarAntecedente.Location = new System.Drawing.Point(82, 245);
             this.btnBuscarAntecedente.Name = "btnBuscarAntecedente";
-            this.btnBuscarAntecedente.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscarAntecedente.Size = new System.Drawing.Size(249, 47);
             this.btnBuscarAntecedente.TabIndex = 7;
             this.btnBuscarAntecedente.Text = "Buscar";
             this.btnBuscarAntecedente.UseVisualStyleBackColor = true;
+            this.btnBuscarAntecedente.Click += new System.EventHandler(this.btnBuscarAntecedente_Click);
+            // 
+            // gboxElecciones
+            // 
+            this.gboxElecciones.Controls.Add(this.btnResultadoVotaciones);
+            this.gboxElecciones.Controls.Add(this.btnRealizarVoto);
+            this.gboxElecciones.Controls.Add(this.btnValidarVotante);
+            this.gboxElecciones.Location = new System.Drawing.Point(822, 12);
+            this.gboxElecciones.Name = "gboxElecciones";
+            this.gboxElecciones.Size = new System.Drawing.Size(339, 648);
+            this.gboxElecciones.TabIndex = 9;
+            this.gboxElecciones.TabStop = false;
+            this.gboxElecciones.Text = "Elecciones";
+            // 
+            // btnResultadoVotaciones
+            // 
+            this.btnResultadoVotaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResultadoVotaciones.Location = new System.Drawing.Point(47, 184);
+            this.btnResultadoVotaciones.Name = "btnResultadoVotaciones";
+            this.btnResultadoVotaciones.Size = new System.Drawing.Size(249, 47);
+            this.btnResultadoVotaciones.TabIndex = 11;
+            this.btnResultadoVotaciones.Text = "Ver Resultados";
+            this.btnResultadoVotaciones.UseVisualStyleBackColor = true;
+            this.btnResultadoVotaciones.Click += new System.EventHandler(this.btnResultadoVotaciones_Click);
+            // 
+            // btnRealizarVoto
+            // 
+            this.btnRealizarVoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRealizarVoto.Location = new System.Drawing.Point(47, 112);
+            this.btnRealizarVoto.Name = "btnRealizarVoto";
+            this.btnRealizarVoto.Size = new System.Drawing.Size(249, 47);
+            this.btnRealizarVoto.TabIndex = 10;
+            this.btnRealizarVoto.Text = "Realizar Voto";
+            this.btnRealizarVoto.UseVisualStyleBackColor = true;
             // 
             // frmVotoEletronico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(810, 663);
+            this.ClientSize = new System.Drawing.Size(1205, 691);
+            this.Controls.Add(this.gboxElecciones);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvResults);
             this.Name = "frmVotoEletronico";
             this.Text = "Voto Electronico";
+            this.Load += new System.EventHandler(this.frmVotoEletronico_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.gboxElecciones.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -242,6 +295,9 @@
         private System.Windows.Forms.Button btnActualizarAntecedente;
         private System.Windows.Forms.Button btnBuscarAntecedente;
         private System.Windows.Forms.Button btnValidarVotante;
+        private System.Windows.Forms.GroupBox gboxElecciones;
+        private System.Windows.Forms.Button btnRealizarVoto;
+        private System.Windows.Forms.Button btnResultadoVotaciones;
     }
 }
 
